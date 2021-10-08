@@ -7,29 +7,33 @@ import java.util.List;
 
 public class OutputView {
     private static final String DISTANCE = "-";
+    private static final int START_WINNER_NAME_INDEX = 0;
 
-    public void printRacingResult(List<Car> cars){
+    public void printExecuteResultText() {
         System.out.println("실행결과");
+    }
+
+    public void printRacingResult(List<Car> cars) {
         for (Car car : cars) {
-            System.out.print(car.name()+" :");
-            printCarDistance(car.position());
+            System.out.print(car.name() + " : ");
+            System.out.println(printCarDistance(car.position()));
         }
+        System.out.println();
     }
 
     public void printWinners(List<Car> cars) {
         String resultWinnerText = new String("최종 우승자는 ");
         resultWinnerText += getWinners(cars, resultWinnerText);
-        resultWinnerText += "입니다.";
+        resultWinnerText += " 입니다.";
         System.out.println(resultWinnerText);
     }
 
     private String getWinners(List<Car> cars, String resultWinnerText) {
+        String winnersName = new String();
         for (Car car : cars) {
-            resultWinnerText += car.name()+",";
+            winnersName += car.name() + ",";
         }
-        if (cars.size() == 1) {
-            resultWinnerText = resultWinnerText.replace(",","");
-        }
+        resultWinnerText += winnersName.substring(START_WINNER_NAME_INDEX, winnersName.lastIndexOf(','));
         return resultWinnerText;
     }
 

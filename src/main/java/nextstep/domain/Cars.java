@@ -1,17 +1,24 @@
 package nextstep.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import nextstep.exception.MyErrorCode;
+import nextstep.exception.MyException;
+
+import java.util.*;
 
 public class Cars {
     private final List<Car> cars;
 
+    public Cars() {
+        this.cars = new ArrayList<>();
+    }
+
     public Cars(String inputCarName) {
-        this.cars = makeCars(inputCarName);
+        this(makeCars(inputCarName));
     }
 
     public Cars(List<Car> cars) {
         this.cars = cars;
+        checkHasDuplicateNameOfCars();
     }
 
     public List<Car> findWinners() {
@@ -29,7 +36,37 @@ public class Cars {
         return this.cars;
     }
 
-    private List<Car> makeCars(String inputCarName) {
+    public boolean isReadyToGo() {
+        return this.cars.size() > 0;
+    }
+
+    public void startRacing() {
+        for (Car car : this.cars) {
+            RandomDecimalNumber randomDecimalNumber = new RandomDecimalNumber();
+            car.move(randomDecimalNumber);
+        }
+    }
+
+    private void checkHasDuplicateNameOfCars() {
+        Set<String> carNameList = new HashSet<>(carNames());
+        if (!isSameSize(carNameList)) {
+            throw new MyException(MyErrorCode.HAS_DUPLICATED_NAME);
+        }
+    }
+
+    private boolean isSameSize(Set<String> carNameList) {
+        return this.cars.size() == carNameList.size();
+    }
+
+    private List<String> carNames() {
+        List<String> carNames = new ArrayList<>();
+        for (Car car : cars) {
+            carNames.add(car.name());
+        }
+        return carNames;
+    }
+
+    private static List<Car> makeCars(String inputCarName) {
         String[] carNames = inputCarName.split(",");
         List<Car> carList = new ArrayList<>();
         for (String carName : carNames) {
