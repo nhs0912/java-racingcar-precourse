@@ -14,7 +14,16 @@ class NameTest {
         assertThatThrownBy(() -> {
             new Name("tomtom");
         }).isInstanceOf(MyException.class)
-                .hasMessageContaining("이름은 5자 이하만 가능합니다.");
+                .hasMessageContaining("[ERROR] 이름은 1글자 이상 5글자 이하만 가능합니다.");
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 아무것도 넣지 않았을때 테스트")
+    void lessThanZeroCarNameLength() {
+        assertThatThrownBy(() -> {
+            new Name("");
+        }).isInstanceOf(MyException.class)
+                .hasMessageContaining("[ERROR] 이름은 1글자 이상 5글자 이하만 가능합니다.");
     }
 
     @Test
