@@ -7,7 +7,7 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(String inputCarName) {
-        this.cars =  makeCars(inputCarName);
+        this.cars = makeCars(inputCarName);
     }
 
     public Cars(List<Car> cars) {
@@ -23,6 +23,10 @@ public class Cars {
             }
         }
         return winners;
+    }
+
+    public List<Car> cars() {
+        return this.cars;
     }
 
     private List<Car> makeCars(String inputCarName) {
