@@ -5,6 +5,10 @@ public class Car {
     private Name name;
     private Position position;
 
+    public Car(String name) {
+        this(new Name(name));
+    }
+
     public Car(Name name) {
         this.name = name;
         this.position = new Position(INIT_POSITION);
@@ -21,7 +25,11 @@ public class Car {
         }
     }
 
-    public int position(){
-        return position.distance();
+    public Position position() {
+        return this.position;
+    }
+
+    public boolean isWinner(Position maxPosition) {
+        return position.isSamePosition(maxPosition);
     }
 }

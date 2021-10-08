@@ -17,13 +17,15 @@ class CarTest {
     @DisplayName("차가 움직이는 테스트")
     void move() {
         car.move(() -> true);
-        Assertions.assertThat(car.position()).isEqualTo(2);
+        Position position = car.position();
+        Assertions.assertThat(position.distance()).isEqualTo(2);
     }
 
     @Test
     @DisplayName("차가 안움직이는 테스트")
     void stop() {
         car.move(() -> false);
-        Assertions.assertThat(car.position()).isEqualTo(1);
+        Position position = car.position();
+        Assertions.assertThat(position.distance()).isEqualTo(1);
     }
 }

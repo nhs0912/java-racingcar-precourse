@@ -13,4 +13,18 @@ class PositionTest {
         position.move();
         assertThat(position.distance()).isEqualTo(2);
     }
+
+    @Test
+    @DisplayName("비교하는 Position이 더 클 때 테스트")
+    void compareBigPosition(){
+        Position position = new Position(2);
+        assertThat(position.isBiggerThan(new Position(1))).isTrue();
+    }
+
+    @Test
+    @DisplayName("비교하는 Position이 더 작을 때 테스트")
+    void compareSmallPosition(){
+        Position position = new Position(3);
+        assertThat(position.isBiggerThan(new Position(4))).isFalse();
+    }
 }
