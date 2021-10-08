@@ -7,7 +7,7 @@ public class RacingCount {
     private static final int INIT_RACE_COUNT = 0;
     private int raceCount;
 
-    public RacingCount(){
+    public RacingCount() {
         this.raceCount = INIT_RACE_COUNT;
     }
 
@@ -17,11 +17,11 @@ public class RacingCount {
         this.raceCount = changeStringToInt(racingCountText);
     }
 
-    public int raceCount(){
+    public int raceCount() {
         return this.raceCount;
     }
 
-    public boolean inputRaceCountReadyToGo(){
+    public boolean inputRaceCountReadyToGo() {
         return this.raceCount > INIT_RACE_COUNT;
     }
 
@@ -33,13 +33,14 @@ public class RacingCount {
         }
     }
 
-    private int changeStringToInt(String racingCountText) throws NumberFormatException{
+    private int changeStringToInt(String racingCountText) throws NumberFormatException {
         return Integer.parseInt(racingCountText);
     }
 
-    private void checkInputNumberLessThanZero(String racingCountText){
-        if(changeStringToInt(racingCountText) <= INIT_RACE_COUNT){
+    private void checkInputNumberLessThanZero(String racingCountText) {
+        if (changeStringToInt(racingCountText) <= INIT_RACE_COUNT) {
             throw new MyException(MyErrorCode.GAME_COUNT_LESS_THAN_OR_EQUAL_TO_ZERO);
-        };
+        }
+        ;
     }
 }

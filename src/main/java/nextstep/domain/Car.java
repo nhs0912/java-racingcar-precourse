@@ -19,7 +19,7 @@ public class Car {
         this.position = position;
     }
 
-    public String name(){
+    public String name() {
         return this.name.name();
     }
 

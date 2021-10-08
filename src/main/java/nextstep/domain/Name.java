@@ -17,7 +17,7 @@ public class Name {
         return this.name;
     }
 
-    private void checkMoreThanFiveOfNameLength(String inputName){
+    private void checkMoreThanFiveOfNameLength(String inputName) {
         if (!isValidNameLength(inputName)) {
             throw new MyException(MyErrorCode.INVALID_LENGTH_OF_NAME);
         }

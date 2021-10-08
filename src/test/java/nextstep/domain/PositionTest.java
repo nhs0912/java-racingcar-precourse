@@ -16,14 +16,14 @@ class PositionTest {
 
     @Test
     @DisplayName("비교하는 Position이 더 클 때 테스트")
-    void compareBigPosition(){
+    void compareBigPosition() {
         Position position = new Position(2);
         assertThat(position.isBiggerThan(new Position(1))).isTrue();
     }
 
     @Test
     @DisplayName("비교하는 Position이 더 작을 때 테스트")
-    void compareSmallPosition(){
+    void compareSmallPosition() {
         Position position = new Position(3);
         assertThat(position.isBiggerThan(new Position(4))).isFalse();
     }

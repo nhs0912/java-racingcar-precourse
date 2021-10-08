@@ -38,8 +38,8 @@ class CarsTest {
         Car joy = new Car(new Name("joy"), new Position(1));
 
         Assertions.assertThatThrownBy(() ->
-                new Cars(Arrays.asList(tom, tom2, joy))
-        ).isInstanceOf(MyException.class)
+                        new Cars(Arrays.asList(tom, tom2, joy))
+                ).isInstanceOf(MyException.class)
                 .hasMessageContaining("[ERROR] 중복된 이름이 있습니다.");
 
 
