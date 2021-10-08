@@ -1,0 +1,27 @@
+package nextstep.domain;
+
+public class Car {
+    private static final int INIT_POSITION = 0;
+    private Name name;
+    private Position position;
+
+    public Car(Name name) {
+        this.name = name;
+        this.position = new Position(INIT_POSITION);
+    }
+
+    public Car(Name name, Position position) {
+        this.name = name;
+        this.position = position;
+    }
+
+    public void move(RandomWay randomWay) {
+        if (randomWay.movable()) {
+            position.move();
+        }
+    }
+
+    public int position(){
+        return position.distance();
+    }
+}
